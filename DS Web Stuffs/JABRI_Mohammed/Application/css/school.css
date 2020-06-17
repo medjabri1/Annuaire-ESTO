@@ -1,0 +1,282 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+.add-buttons-box {
+    width: 100%;
+    max-width: 550px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.add-buttons-box h2 {
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    color: #220133;
+    font-size: .9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    user-select: none;
+    /* background: linear-gradient(to bottom left, #220133, #2201AE); */
+    background: linear-gradient(to bottom left, #2201AE 10%, #220133);
+    color: #FFF;
+}
+
+.add-buttons-box h2:nth-of-type(2) {
+    background: linear-gradient(to bottom left, #AE0122 10%, #220133);
+}
+
+/* Style des fenetres flottantes d'ajout de filiere et departement */
+
+.modal.float {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20000;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000099;
+    overflow: hidden;
+    z-index: 10000;
+}
+
+.modal.float.active {
+    display: flex;
+}
+
+.modal > form {
+    width: calc(100% - 70px);
+    max-width: 600px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0px 0px 4px #22013366;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal > form p {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    color: #220133;
+}
+
+.modal > form input, .modal > form select, .modal > form textarea {
+    width: 100%;
+    padding: 7px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 3px #22013333;
+    color: #220133;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    resize: none;
+}
+
+.modal > form input:focus, .modal > form select:focus, .modal > form textarea:focus {
+    box-shadow: 0px 0px 3px #22013399;
+}
+
+.modal > form label {
+    width: 100%;
+    text-align: left;
+    color: #220133;
+    margin: 20px 0px 5px 0px;
+    letter-spacing: 1px;
+    font-size: .8em;
+}
+
+.modal > form input[type="submit"] {
+    background-color: #220133;
+    color: #ffffff;
+    padding: 10px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.modal .modal-close-button {
+    user-select: none;
+    color: #FFF;
+    font-size: 3em;
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transform: rotate(45deg);
+    transform-origin: center;
+    cursor: pointer;
+}
+
+/* Style des listes departement > filiere > Etudiants */
+
+.dept-list {
+    margin-top: 30px;
+    width: 100%;
+    height: fit-content;
+}
+
+.dept-list .dept {
+    margin: 40px 20px;
+    box-shadow: 0px 0px 3px 0px #22013355;
+    padding: 30px;
+}
+
+.dept-list .dept .dept-name {
+    color: #990101;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.dept-list .dept-name .edit-dept-icon img {
+    float: right;
+    width: 25px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dept-list .dept-name .edit-dept-icon img:active {
+    transform: scale(1.1);
+}
+
+.dept-list .dept .filiere {
+    padding: 10px 20px;
+}
+
+.dept-list .dept .filiere .filiere-name {
+    color: #220133;
+    word-spacing: 3px;
+    text-transform: capitalize;
+    font-size: 1.1em;
+}
+
+.dept-list .dept .filiere .filiere-name .edit-filiere-icon img {
+    float: right;
+    width: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dept-list .dept .filiere .filiere-name .edit-filiere-icon img:active {
+    transform: scale(1.1);
+}
+
+.dept-list .dept .filiere .filiere-name .nbr-students {
+    color: #990101;
+    word-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.dept-list .dept .filiere .filiere-name .students-toggler {
+    width: 15px;
+    cursor: pointer;
+}
+
+.filiere .students-list table {
+    width: 100%;
+    margin: 30px 0px;
+    border-collapse: collapse;
+}
+
+.filiere .students-list table td, .filiere .students-list table th {
+    text-align: left;
+    padding: 5px;
+    border: 1px solid #22013333;
+    letter-spacing: 1px;
+    font-size: 1em;
+}
+
+.filiere .students-list table th {
+    padding: 10px 5px;
+    background-color: #220133;
+    color: #FFF;
+}
+
+.filiere .students-list {
+    display: none;
+}
+
+.filiere.active .students-list {
+    display: unset;
+}
+
+.filiere.active .students-toggler {
+    transform: rotate(90deg);
+}
+
+/* Pour rendre la page responsive */
+
+@media screen and (max-width: 900px) {
+
+    .add-buttons-box h2 {
+        font-size: .65em !important;
+    }
+
+    .dept-list .dept {
+        padding: 15px !important;
+    }
+
+    .dept-name {
+        font-size: 1.05em !important;
+    }
+
+    .dept .edit-dept-icon img {
+        width: 15px !important;
+    }
+
+    .dept-list .filiere {
+        padding: 5px 0 !important;
+    }
+
+    .dept-list .filiere .filiere-name {
+        font-size: .9em !important;
+    }
+
+    .filiere-name .edit-filiere-icon img {
+        width: 12px !important;
+    }
+
+    .students-toggler {
+        width: 10px !important;
+    }
+
+    .students-list {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .students-list table {
+        margin: 10px 0 !important;
+        padding: 0 !important;
+    }
+
+}

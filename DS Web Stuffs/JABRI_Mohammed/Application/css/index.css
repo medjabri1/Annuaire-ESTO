@@ -1,0 +1,289 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.showcase {
+    width: 100%;
+    height: 100%;
+    background: #330133;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: animShowcase 3000ms alternate infinite ease-in-out;
+}
+
+/* Animation de l'arriere plan */
+
+@keyframes animShowcase {
+    from {
+        background: #330133;
+    }
+    to {
+        background: #010111;
+    }
+}
+
+/* Showcase elements Logo / Title */
+
+.showcase .showcase-logo {
+    filter: invert(1);
+    border: 5px solid #000;
+    padding: 20px;
+    border-radius: 20px;
+    pointer-events: none;
+    height: 100px;
+}
+
+.showcase > h1 {
+    color: #F1F1F1;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: cursive;
+    margin: 10px;
+}
+
+.showcase > h1 span {
+    color: #832121;
+    font-family: cursive;
+}
+
+.showcase > p {
+    color: #F1F1F199;
+    max-width: 700px;
+    margin: 20px;
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    font-family: cursive;
+    margin: 10px;
+}
+
+.showcase > p span {
+    font-family: cursive;
+    text-shadow: 0px 0px 4px #FFFFFF55;
+}
+
+/* Style bouttons se connecter / s'inscrire */
+
+.showcase .sign {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.showcase .sign h2 {
+    color: #fff;
+    width: 200px;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    user-select: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1em;
+}
+
+.showcase .sign h2:nth-of-type(1) {
+    background: linear-gradient(to right, #00416a, #88416a);
+}
+
+.showcase .sign h2:nth-of-type(2) {
+    background: linear-gradient(to right, #924123, #924455);
+}
+
+.showcase .sign h2:hover {
+    filter: hue-rotate(-70deg);
+}
+
+/* Style des messages de succes / error */
+
+.showcase .succes-messages, .showcase .error-messages {
+    color: #FFF;
+    background-color: #228B2299;
+    padding: 10px 20px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: .8em;
+    animation: messageAnim 2000ms alternate infinite ease-in-out;
+    cursor: pointer;
+    user-select: none;
+}
+
+.showcase .error-messages {
+    background-color: #893302CC;
+}
+
+@keyframes messageAnim {
+    0%, 70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Style de connexion / inscription */
+
+.sign-in-div, .sign-up-div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    transform: translateX(100%);
+    opacity: 0;
+    transform-origin: center;
+
+    transition: all 400ms ease-in-out;
+    transition-property: transform, opacity;
+}
+
+.sign-in-div {
+    transform: translateX(-100%);
+}
+
+.sign-in-div.active, .sign-up-div.active {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+}
+
+.sign-in-div form, .sign-up-div form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #F1F1F1;
+    color: #010123;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.sub-form {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.sub-form div {
+    width: calc(50% - 8px);
+}
+
+.sub-form div input {
+    width: 100% !important;
+}
+
+.sign-in-div form input, .sign-up-div form input, .sign-up-div form select {
+    width: 90%;
+    padding: 7px;
+    font-size: .8em;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 3px 0px #00000033;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.sign-in-div form input:focus, .sign-up-div form input:focus, .sign-up-div form select:focus {
+    box-shadow: 0px 0px 3px 0px #212199AA;
+}
+
+.sign-in-div form label, .sign-up-div form label {
+    width: 90%;
+    align-self: left;
+    margin-bottom: 5px;
+    font-size: .8em;
+}
+
+.sign-in-div form input[type='submit'], .sign-up-div form input[type='submit'] {
+    background: linear-gradient(to bottom left, #323288, #000044);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px;
+    margin: 10px 0;
+    transition: filter 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.sign-in-div form input[type='submit']:hover, .sign-up-div form input[type='submit']:hover {
+    filter: hue-rotate(90deg);
+}
+
+.sign-in-div form input[type='submit']:active, .sign-up-div form input[type='submit']:active {
+    transform: scale(1.02);
+}
+
+#signin-errors, #signup-errors {
+    color: red;
+    width: 90%;
+    align-self: left;
+    font-size: .9em;
+}
+
+.close-sign {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    z-index: 1000;
+    color: #fff;
+    font-size: 3em;
+    font-weight: 900;
+    transform: rotate(45deg);
+    user-select: none;
+    cursor: pointer;
+}
+
+/* Pour mettre la page responsive */
+
+@media screen and (max-width: 600px) {
+    
+    .showcase .showcase-logo {
+        height: 70px;
+        padding: 10px;
+        border: 2px solid #000
+    }
+
+    .showcase h1 {
+        font-size: 1.2em;
+    }
+
+    .showcase p {
+        font-size: .8em;
+    }
+
+    .showcase .sign h2 {
+        font-size: .6em;
+        padding: 10px 12px;
+        width: 140px;
+    }
+}

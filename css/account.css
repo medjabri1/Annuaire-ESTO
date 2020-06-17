@@ -1,0 +1,225 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+.settings {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings .settings-title {
+    color: #220133;
+    margin: 10px 0;
+    font-size: 1.4em;
+}
+
+.settings .settings-title span {
+    color: #943232;
+    text-transform: uppercase;
+}
+
+/* Les messages d'erreur / de succes */ 
+
+.alert-messages {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    cursor: pointer;
+}
+
+.alert-messages .error-message, .alert-messages .succes-message {
+    padding: 30px;
+    color: #FFF;
+    background-color: #326632;
+    text-align: center;
+    border-radius: 20px;
+    animation: messageAnim 2500ms ease-in-out alternate infinite;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+}
+
+.alert-messages .error-message {
+    background-color: #772121;
+}
+
+@keyframes messageAnim {
+    0%, 70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
+
+/* Choix entre données personnelles et mot de passe */
+
+.modify-options {
+    align-self: center;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    box-shadow: 0px 0px 5px #22013322;
+    margin-top: 20px;
+}
+
+.modify-options hr {
+    width: 2px;
+    height: 70%;
+    align-self: center;
+    filter: blur(1px);
+    border: 1px solid #22013322;
+}
+
+.modify-options .modify-choices {
+    width: 100%;
+    text-align: center;
+    color: #220133;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    user-select: none;
+    cursor: pointer;
+    height: 100%;
+    line-height: 50px;
+    opacity: .5;
+    letter-spacing: 1px;
+    pointer-events: unset;
+}
+
+.modify-options .modify-choices.active {
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* STyles de formilaire */
+
+.modify-form {
+    width: 100%;
+    margin: auto;
+    max-width: 1000px;
+    height: fit-content;
+    transition: transform 400ms ease-in-out;
+    display: none;
+}
+
+.modify-form.active {
+    display: unset;
+}
+
+.modify-form .sub-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modify-form .sub-form > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px 10px;
+}
+
+.modify-form label {
+    color: #220133;
+    letter-spacing: 1px;
+    margin: 7px;
+    cursor: pointer;
+}
+
+.modify-form input, .modify-form select {
+    padding: 7px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 3px #22013344;
+    border-radius: 10px;
+    font-size: 1em;
+    color: #220133;
+    letter-spacing: 1px;
+}
+
+.modify-form input:focus, .modify-form select:focus {
+    box-shadow: 0px 0px 3px #22013399;
+}
+
+.modify-form input[type="submit"] {
+    background-color: #220133;
+    color: #FFF;
+    transition: background-color 200ms ease-in-out;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    align-self: center;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.modify-form input[type="submit"]:hover {
+    background-color: #943232;
+}
+
+.modify-form input[type="submit"]:active {
+    transform: scale(1.02);
+}
+
+#modify-errors, #password-errors {
+    width: 100%;
+    max-width: 500px;
+    color: #943232;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    align-self: center;
+    text-align: center;
+}
+
+/* Modification du mot de passe */
+
+.modify-form.password .sub-form {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+
+/* Pour rendre la page responsive */
+
+@media screen and (max-width: 900px) {
+
+    .settings-title {
+        font-size: 1em !important;
+    }
+
+    .alert-messages {
+        font-size: .7em !important;
+    }
+
+    .modify-options .modify-choices {
+        font-size: .7em  !important;
+    }
+
+    .modify-form .sub-form {
+        /* font-size: .9em !important; */
+        flex-direction: column !important;
+    }
+    
+}

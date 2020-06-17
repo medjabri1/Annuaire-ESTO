@@ -1,0 +1,30 @@
+Table USER :
+
+create table user ( user_id int primary key auto_increment, nom varchar(30) not null, prenom varchar(30) not null, description varchar(2) not null, telephone varchar(10) not null unique, email varchar(100) not null unique, password varchar(100) not null );
+
+alter table user add column created_at timestamp not null default current_timestamp;
+
+==========================================================================================
+
+Table PERSONNEL :
+
+create table personnel ( ppr int primary key, user_id int not null, foreign key(user_id) references user(user_id) );
+
+==========================================================================================
+
+Table DEPARTEMENT :
+
+create table departement ( dept_id int primary key auto_increment, dept_name varchar(30) not null );
+
+==========================================================================================
+
+
+Table FILIERE :
+
+create table filiere ( filiere_id int primary key auto_increment, dept_id int not null, filiere_name varchar(10) not null, filiere_description varchar(100) not null, foreign key(dept_id) references departement(dept_id) );
+
+==========================================================================================
+
+Table ETUDIANT : 
+
+create table etudiant ( cne varchar(10) primary key, user_id int not null, filiere_id int not null, foreign key(user_id) references user(user_id), foreign key(filiere_id) references filiere(filiere_id) );
